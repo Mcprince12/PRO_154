@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/zcanter/aframe-gradient-sky/master/dist/gradientsky.min.js"></script>
+    
+    <!-- IMPORTED COMPONENTS -->    
+    <script src="./js/Rotation.js"></script>
+    <script src="./js/fish.js"></script>
+    <script src="./js/fish2.js"></script>
+    <script src="./js/fish3.js"></script>
+  </head>
+  <body>
+    <a-scene >
+      <!---Assets-->
+      <a-a-assets>
+        <a-asset-item id="island" src="assets/island/scene.gltf"></a-asset-item>
+
+        <a-asset-item
+          id="treasure"
+          src="assets/tresure/scene.gltf"
+        ></a-asset-item>
+       
+      
+        <a-asset-item
+          id="scuba_driver"
+          src="assets/boy/scene.gltf"
+        ></a-asset-item>
+      </a-a-assets>
+
+      <!-- Sky -->
+      <a-sky
+       
+        src="https://images.unsplash.com/photo-1530053969600-caed2596d242?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dW5kZXJ3YXRlcnxlbnwwfHwwfHw%3D&w=1000&q=80"
+      >
+
+
+        <!--Island-->
+        <a-entity terrain-rotation-reader>
+        <a-entity
+          gltf-model="#island"
+          scale="1 1 1"
+          position="0 -15 -40"
+          
+        ></a-entity>
+        <a-entity position="0 0 0" id="fishModels" fish> </a-entity>
+        <a-entity position="0 0 0" id="fishModels" fish2> </a-entity>
+        <a-entity position="0 0 0" id="fishModels" fish3> </a-entity>
+        <!--Trasures-->
+        <a-entity
+          gltf-model="#treasure"
+          scale="0.5 0.5 0.5"
+          position="0 0 -42"
+          rotation="0 360 0"
+        ></a-entity>
+
+        <a-entity
+        gltf-model="#treasure"
+        scale="0.5 0.5 0.5"
+        position="-12 0 -45"
+        rotation="0 360 0"
+      ></a-entity>
+
+        <a-entity
+        gltf-model="#treasure"
+        scale="0.5 0.5 0.5"
+        position="12 0 -45"
+        rotation="0 360 0"
+      ></a-entity>
+    </a-entity>
+    
+      </a-sky>
+
+      <!--Scuba Driver-->
+      <a-entity
+        gltf-model="#scuba_driver"
+        scale="0.1 0.1 0.1"
+        position="5 -10 -20"
+        rotation="0 360 0"        
+        diver-rotation-reader
+      >
+        <a-sphere
+          id="bubble1"
+          position="52.9829 119.97737 -49.38121"
+          radius="1"
+          color="#b2ebf2"
+          animation="property: position; to: 52.9829 300 -49.38121;easing:linear; loop: true; dur: 2000"
+        ></a-sphere>
+      </a-entity>
+
+      <a-cylinder color="#00009e" radius="100" opacity="0.2"></a-cylinder>
+
+      <!-- CAMERA -->
+      <a-entity movement-controls="fly: true">
+        <a-entity camera position="0 1.6 0" look-controls></a-entity>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
